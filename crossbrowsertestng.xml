@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.qalegend.reports.TestListener"/>
+    </listeners>
+    <test  name="chrome test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.qalegend.testscripts.LoginPageTest"/>
+        </classes>
+    </test>
+    <test  name="edge test">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="com.qalegend.testscripts.LoginPageTest"/>
+        </classes>
+    </test>
+</suite>
