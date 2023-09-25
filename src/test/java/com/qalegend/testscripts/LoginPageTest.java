@@ -2,6 +2,7 @@ package com.qalegend.testscripts;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.qalegend.automationcore.Base;
+import com.qalegend.pages.HomePage;
 import com.qalegend.pages.LoginPage;
 import com.qalegend.reports.TestListener;
 import com.qalegend.retryanalyzer.RetryAnalyzer;
@@ -21,5 +22,17 @@ public class LoginPageTest extends Base {
         String expectedTitle = data.get(0).get(1);
         Assert.assertEquals(actualTitle, expectedTitle, "login page Title mismatch  found");
         extentTest.get().log(Status.PASS,"expected login page title "+expectedTitle+" matched with actual title "+actualTitle);
+    }
+    @Test(groups = {"smoke","regression"})
+    public void verifyUserLogin(){
+        extentTest.get().assignCategory("regression");
+        List<List<String>> data = ExcelUtility.excelDataReader("LoginPage");
+        String userName=data.get(1).get(1);
+        String passWord=data.get(2).get(1);
+        String userAccountName=data.get(3).get(1);
+        LoginPage login=new LoginPage(driver);
+       HomePage home= login.loginToApplication(userName,passWord);
+      String actualUserAccountName= home.getUserAccountName();
+      Assert.assertEquals(actualUserAccountName,userAccountName,"user login failed");
     }
 }
