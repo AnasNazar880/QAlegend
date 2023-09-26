@@ -10,10 +10,11 @@
         <classes>
             <class name="com.qalegend.testscripts.LoginPageTest">
                 <methods>
-                    <include name="verifyUserLogin"/>
+                    <exclude name="verifyUserLogin"/>
                     <exclude name="verifyLoginPageTitle"/>
                 </methods>
             </class>
+            <class name="com.qalegend.testscripts.ResetPageTest"/>
         </classes>
     </test>
 </suite>

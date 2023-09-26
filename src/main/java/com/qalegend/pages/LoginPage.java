@@ -26,6 +26,14 @@ public class LoginPage extends TestHelperUtility {
     @FindBy(xpath = "//button[@class='btn btn-default btn-sm']")
     WebElement endTour;
 
+    @FindBy(xpath = "//a[@class='btn btn-link']")
+    WebElement forgetPassWord;
+
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    WebElement passWordResetLink;
+    @FindBy(id = "email")
+    WebElement resetEmail;
+
 
     public String getLoginPageTitle() {
         return webDriver.getTitleOfPage(driver);
@@ -43,9 +51,12 @@ public class LoginPage extends TestHelperUtility {
         webElement.clickOnElement(loginButton);
 
     }
-
     public void clickOnEndTour() {
         webElement.clickOnElement(endTour);
+    }
+
+    public void clickOnForgetPassWd() {
+        webElement.clickOnElement(forgetPassWord);
     }
 
     public HomePage loginToApplication(String uName, String pWord) {
@@ -55,5 +66,20 @@ public class LoginPage extends TestHelperUtility {
         clickOnEndTour();
         return new HomePage(driver);
 
+    }
+
+    public void clickOnResetPassWordLink() {
+        webElement.clickOnElement(passWordResetLink);
+    }
+
+    public void enterInvalidUserName(String invalidUserName) {
+        webElement.enterText(resetEmail, invalidUserName);
+    }
+
+    public ResetPage loginToResetPage(String invalidUserEmail) {
+        clickOnForgetPassWd();
+        enterInvalidUserName(invalidUserEmail);
+        clickOnResetPassWordLink();
+        return new ResetPage(driver);
     }
 }
