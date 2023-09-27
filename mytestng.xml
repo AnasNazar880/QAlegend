@@ -6,15 +6,12 @@
     </listeners>
     <test  name="login test">
 <parameter name="browser" value="chrome"/>
-
         <classes>
             <class name="com.qalegend.testscripts.LoginPageTest">
                 <methods>
-                    <exclude name="verifyUserLogin"/>
-                    <exclude name="verifyLoginPageTitle"/>
+                    <include name="verifyLoginErrorMessageWithInvalidCredentials"/>
                 </methods>
-            </class>
-            <class name="com.qalegend.testscripts.ResetPageTest"/>
+                    </class>
         </classes>
     </test>
 </suite>

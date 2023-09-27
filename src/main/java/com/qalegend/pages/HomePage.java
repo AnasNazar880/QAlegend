@@ -14,8 +14,14 @@ public class HomePage extends TestHelperUtility {
     }
     @FindBy(xpath = "//li[@class='dropdown user user-menu']//a[@class='dropdown-toggle']/span")
     WebElement userAccountName;
+    @FindBy(xpath = "//span[text()='User Management']")
+    WebElement userManagement;
 
     public String getUserAccountName(){
         return webElement.getElementText(userAccountName);
+    }
+    public UserManagementPage clickOnUserManagementPanel(){
+        webElement.clickOnElement(userManagement);
+        return new UserManagementPage(driver);
     }
 }

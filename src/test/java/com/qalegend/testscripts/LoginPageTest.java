@@ -3,6 +3,7 @@ package com.qalegend.testscripts;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.qalegend.automationcore.Base;
+import com.qalegend.dataprovider.LoginDataProvider;
 import com.qalegend.pages.HomePage;
 import com.qalegend.pages.LoginPage;
 import com.qalegend.reports.TestListener;
@@ -39,5 +40,17 @@ public class LoginPageTest extends Base {
         HomePage home = login.loginToApplication(userName, passWord);
         String actualUserAccountName = home.getUserAccountName();
         Assert.assertEquals(actualUserAccountName, userAccountName, "user login failed");
+    }
+    @Test(groups = {"regression"}, dataProvider = "userCredentialsFormExcel" ,dataProviderClass = LoginDataProvider.class)
+    public void verifyLoginErrorMessageWithInvalidCredentials(String uName,String pWord){
+        extentTest.get().assignCategory("regression");
+        List<List<String>> data = ExcelUtility.excelDataReader("LoginPage");
+        String expectedErrorMessage=data.get(4).get(1);
+        LoginPage login=new LoginPage(driver);
+        login.enterUserName(uName);
+        login.enterPassWord(pWord);
+        login.clickOnLoginButton();
+        String actualErrorMessage= login.getInvalidUserNameErrorMessage();
+        Assert.assertEquals(actualErrorMessage,expectedErrorMessage,"Error message mismatch: Actual error message does not match the expected error message.");
     }
 }

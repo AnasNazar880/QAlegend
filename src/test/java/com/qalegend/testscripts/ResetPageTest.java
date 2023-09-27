@@ -14,17 +14,17 @@ import java.util.List;
 
 public class ResetPageTest extends Base {
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
-
     @Test(groups = {"smoke"})
     public void verifyPassWordErrorMessage() {
         extentTest.get().assignCategory("smoke");
         List<List<String>> data = ExcelUtility.excelDataReader("ResetPage");
         String expectedErrorMessage = data.get(0).get(1);
-        String invalidUserName = RandomDataUtility.firstName() + RandomDataUtility.LastName() + "@test.com";
-        //ResetPage resetPage=new ResetPage(driver);
+        String invalidEmail = RandomDataUtility.firstName() + RandomDataUtility.LastName() + "@test.com";
         LoginPage login = new LoginPage(driver);
-        ResetPage reset = login.loginToResetPage(invalidUserName);
-        String actualErrorMessage = reset.getInvalidUserNameText();
-        Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "error message not similar");
+        ResetPage reset = login.clickOnForgetPassword();
+        reset.enterResetEmail(invalidEmail);
+        reset.clickOnResetPassWordLink();
+        String actualErrorMessage = reset.getInvalidErrorMessage();
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Error message mismatch: Actual error message does not match the expected error message.");
     }
 }
