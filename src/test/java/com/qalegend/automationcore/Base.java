@@ -49,7 +49,7 @@ public class Base {
         driver.manage().deleteAllCookies();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     @Parameters({"browser"})
     public void setup(String browserName) {
         String baseUrl = prop.getProperty("url");

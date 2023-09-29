@@ -7,12 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TableUtility {
-    public static List<ArrayList<String>> get_Dynamic_TwoDimension_TablElemnts(List<WebElement> rowItems, List<WebElement> columnItems) {
-        int rSize = rowItems.size() - 1;
-        int colnmSize = columnItems.size();
+    public static List<List<String>> get_Dynamic_TwoDimension_TablElemnts(List<WebElement> rowItems, List<WebElement> columnItems) {
+        int rSize = rowItems.size() ;
+        int colnmSize = columnItems.size()-1;
         String[] columnList = new String[colnmSize / rSize];
 
-        List<ArrayList<String>> gridData = new ArrayList<ArrayList<String>>();
+        List<List<String>> gridData = new ArrayList<>();
         int x = 0;
         for (int i = 0; i < rSize; i++) {
             for (int j = 0; j < columnList.length; j++) {

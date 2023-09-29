@@ -19,7 +19,7 @@ public class ResetPageTest extends Base {
         extentTest.get().assignCategory("smoke");
         List<List<String>> data = ExcelUtility.excelDataReader("ResetPage");
         String expectedErrorMessage = data.get(0).get(1);
-        String invalidEmail = RandomDataUtility.firstName() + RandomDataUtility.LastName() + "@test.com";
+        String invalidEmail = RandomDataUtility.getFirstName() + RandomDataUtility.getLastName() + "@test.com";
         LoginPage login = new LoginPage(driver);
         ResetPage reset = login.clickOnForgetPassword();
         reset.enterResetEmail(invalidEmail);

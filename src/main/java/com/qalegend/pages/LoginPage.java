@@ -64,6 +64,7 @@ public class LoginPage extends TestHelperUtility {
        return webElement.getElementText(userNameErrorMessage);
     }
 
+
     public HomePage loginToApplication(String uName, String pWord) {
         enterUserName(uName);
         enterPassWord(pWord);
@@ -72,5 +73,10 @@ public class LoginPage extends TestHelperUtility {
         return new HomePage(driver);
 
     }
-
+    public HomePage RetryLoginUsingNewlyCreatedCredentials(String uName,String pWord) {
+        enterUserName(uName);
+        enterPassWord(pWord);
+        clickOnLoginButton();
+        return new HomePage(driver);
+    }
 }

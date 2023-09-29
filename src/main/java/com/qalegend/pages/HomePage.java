@@ -24,4 +24,7 @@ public class HomePage extends TestHelperUtility {
         webElement.clickOnElement(userManagement);
         return new UserManagementPage(driver);
     }
+    public String getHomePageTitle(){
+        return webDriver.getTitleOfPage(driver);
+    }
 }

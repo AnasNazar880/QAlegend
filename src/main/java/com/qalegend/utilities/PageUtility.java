@@ -29,4 +29,11 @@ public class PageUtility {
         }
         return data;
     }
+    public List<List<String>> getUserDataIntoList(String prefix,String firstName,String lastName,String userName,String email,String role){
+        List<List<String>> data=new ArrayList<>();
+        String name=prefix+" "+firstName+" "+lastName;
+        List<String> userData=Arrays.asList(userName,name,role,email);
+        data.add(userData);
+        return data;
+    }
 }

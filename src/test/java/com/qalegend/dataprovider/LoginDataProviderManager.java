@@ -3,7 +3,7 @@ package com.qalegend.dataprovider;
 import com.qalegend.utilities.ExcelUtility;
 import org.testng.annotations.DataProvider;
 
-public class LoginDataProvider {
+public class LoginDataProviderManager {
     @DataProvider(name = "userCredentialsFormExcel")
     public Object[][] userCredentialsFormExcel() {
         ExcelUtility excel = new ExcelUtility();

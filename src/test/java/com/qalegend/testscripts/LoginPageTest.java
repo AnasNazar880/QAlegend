@@ -3,11 +3,10 @@ package com.qalegend.testscripts;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.qalegend.automationcore.Base;
-import com.qalegend.dataprovider.LoginDataProvider;
+import com.qalegend.dataprovider.LoginDataProviderManager;
 import com.qalegend.pages.HomePage;
 import com.qalegend.pages.LoginPage;
 import com.qalegend.reports.TestListener;
-import com.qalegend.retryanalyzer.RetryAnalyzer;
 import com.qalegend.utilities.ExcelUtility;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -29,9 +28,9 @@ public class LoginPageTest extends Base {
         extentTest.get().log(Status.PASS, "expected login page title " + expectedTitle + " matched with actual title " + actualTitle);
     }
 
-    @Test(groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "Regression"})
     public void verifyUserLogin() {
-        extentTest.get().assignCategory("regression");
+        extentTest.get().assignCategory("Regression");
         List<List<String>> data = ExcelUtility.excelDataReader("LoginPage");
         String userName = data.get(1).get(1);
         String passWord = data.get(2).get(1);
@@ -41,9 +40,9 @@ public class LoginPageTest extends Base {
         String actualUserAccountName = home.getUserAccountName();
         Assert.assertEquals(actualUserAccountName, userAccountName, "user login failed");
     }
-    @Test(groups = {"regression"}, dataProvider = "userCredentialsFormExcel" ,dataProviderClass = LoginDataProvider.class)
+    @Test(groups = {"Regression"}, dataProvider = "userCredentialsFormExcel" ,dataProviderClass = LoginDataProviderManager.class)
     public void verifyLoginErrorMessageWithInvalidCredentials(String uName,String pWord){
-        extentTest.get().assignCategory("regression");
+        extentTest.get().assignCategory("Regression");
         List<List<String>> data = ExcelUtility.excelDataReader("LoginPage");
         String expectedErrorMessage=data.get(4).get(1);
         LoginPage login=new LoginPage(driver);
