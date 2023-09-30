@@ -24,6 +24,7 @@ public class UserManagementPage extends TestHelperUtility {
 
 
     public List<String> getUserManagementPanelValues() {
+        wait.hardWait();
         return page.getValuesAsText(panelValues);
     }
 
