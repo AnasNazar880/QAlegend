@@ -36,4 +36,10 @@ public class PageUtility {
         data.add(userData);
         return data;
     }
+    public List<List<String>> getCategoryDataIntoList(String categoryName,String categoryCode){
+        List<List<String>>data=new ArrayList<>();
+        List<String> categoryData=Arrays.asList(categoryName,categoryCode);
+        data.add(categoryData);
+        return data;
+    }
 }

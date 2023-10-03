@@ -55,11 +55,23 @@ public class RandomDataUtility {
         String prefix=faker.name().prefix();
         return prefix;
     }
-    public static String getRandomNumber(){
-        faker=new Faker();
-        String randomNumber=faker.number().digit();
+    public static String getRandomNumber() {
+        faker = new Faker();
+        String randomNumber = faker.number().digit();
         return randomNumber;
-
+    }
+    public static String getRandomCategory(){
+        faker=new Faker();
+        // Define an array of possible categories
+        String[] categories = {"milk", "tea powder", "coffee", "juice", "snacks", "cereal", "spices", "sugar", "bread", "eggs"};
+        // Generate a random category
+        String randomCategory = faker.options().option(categories);
+        return randomCategory;
+    }
+    public static  String getRandomCategoryCode(){
+        faker=new Faker();
+        String randomCode=faker.number().digit();
+        return randomCode;
     }
 
 }

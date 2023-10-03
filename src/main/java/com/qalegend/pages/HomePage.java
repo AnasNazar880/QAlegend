@@ -16,6 +16,8 @@ public class HomePage extends TestHelperUtility {
     WebElement userAccountName;
     @FindBy(xpath = "//span[text()='User Management']")
     WebElement userManagement;
+    @FindBy(xpath = "//i[@class='fa fa-cubes'] / following-sibling::span")
+    WebElement products;
 
     public String getUserAccountName(){
         return webElement.getElementText(userAccountName);
@@ -27,4 +29,10 @@ public class HomePage extends TestHelperUtility {
     public String getHomePageTitle(){
         return webDriver.getTitleOfPage(driver);
     }
+    public ProductsPage clickOnProductsPanel() {
+        webElement.clickOnElement(products);
+        return new ProductsPage(driver);
+    }
+
+
 }
